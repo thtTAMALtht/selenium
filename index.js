@@ -13,7 +13,7 @@ class BasePage {
     this.email = By.id("Email");
     this.password = By.id("Password");
     this.confirmPassword = By.id("ConfirmPassword");
-    
+    this.registerButton = By.name("register-button");
   }
   //browser open method
   async browserOpen(url) {
@@ -49,7 +49,10 @@ class BasePage {
     await this.driver.findElement(this.confirmPassword).sendKeys(confirmPassword);
   }
 
- 
+  async clickRegisterButton() {
+    await this.driver.findElement(this.registerButton).click();
+  }
+
 
   //browser close method
   async browserClose() {
@@ -64,9 +67,10 @@ await pages.clickRegisterLink();
 await pages.clickGender();
 await pages.enterFirstName();
 await pages.enterLastName("Absar");
-await pages.enterEmail("tahire@gmail.com");
+await pages.enterEmail("tahiree@gmail.com");
 await pages.enterPassword("Password123");
 await pages.enterConfirmPassword("Password123");
+await pages.clickRegisterButton();
 await pages.driver.sleep(2000);
 await pages.browserClose();
 
